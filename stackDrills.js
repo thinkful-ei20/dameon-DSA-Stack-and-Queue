@@ -13,7 +13,7 @@ class Stack {
     this.top =null;
   }
 
-  pop(data) {
+  pop(data=this.top) {
     let node = this.top;
     while(node.data !== data){
       node = node.next;      
@@ -57,11 +57,31 @@ starTrek.push('McKoy');
 starTrek.push('Scotty');
 //console.log(starTrek);
 //display(starTrek);
-peek(starTrek);
+//peek(starTrek);
 starTrek.pop('McKoy');
-peek(starTrek);
-display(starTrek);
+//peek(starTrek);
+//display(starTrek);
 
 
 
 
+function is_palindrome(s) {
+  let newStack = new Stack();
+  s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, '').split('');
+  
+  s.map(x=> newStack.push(x));
+  for(let i = 0; i < s.length; i+=1){
+    let value = s.pop();
+    if(s[i] !== value ){
+      return false;
+    }
+    return true;
+  }
+  //console.log(newStack); 
+}
+
+// true, true, true
+console.log(is_palindrome('dad'));
+console.log(is_palindrome('A man, a plan, a canal: Panama'));
+console.log(is_palindrome('1001'));
+console.log(is_palindrome('Tauhida'));
